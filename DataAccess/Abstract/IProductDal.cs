@@ -5,13 +5,9 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    // Product ile ilgili methodları yazdgımız kısımdır.
-   public interface IProductDal
+    // Product ile ilgili veri erişim  methodları yazdgımız kısımdır.
+   public interface IProductDal : IEntityRepository<Product>
     {
-        List<Product> GetAll();
-        void Add(Product product);
-        void Delete(Product product);
-        void Update(Product product);
-        List<Product> GetAllByCategory(int categorydId);
+      
     }
 }
