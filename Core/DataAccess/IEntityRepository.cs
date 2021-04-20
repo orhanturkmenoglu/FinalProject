@@ -1,10 +1,10 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
     // Expression<Func<T,bool>> filter=null : bu kullandığımız expression linq ile birlikte geliyoru 
     // biz  bu yapıyla hangi ürünü istiyorsak onu getirmemizi saglar. null filtre vermeyedebiliriz demek 
@@ -18,6 +18,8 @@ namespace DataAccess.Abstract
     // class: T için referans tutan olmalı,
     // IEntity:IEntity olabilir veya IEntityden  implement olan  olmalı 
     //new(): newlenebilir olması gerek.
+
+    // Core evrensel bir katmandır data access klasorü veri erişime hizmet edecek kodları bunun içine koyacaz
     public interface IEntityRepository<T> where T: class,IEntity,new()
     {
         List<T> GetAll(Expression<Func<T,bool>> filter=null);

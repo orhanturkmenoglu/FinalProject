@@ -13,13 +13,35 @@ namespace ConsoleUI
 
             ProductManager productManager = new ProductManager(new EfProductDal());
 
-            GetAllTest(productManager);
+            // GetAllTest(productManager);
 
             // GetAllByCategoryIdTest(productManager);
 
             // GetByUnitPriceTest(productManager);
 
+            // CategoryManagerTest();
+
+           // ProductDetailDto(productManager);
+
             Console.ReadLine();
+        }
+
+        private static void ProductDetailDto(ProductManager productManager)
+        {
+            foreach (var product in productManager.GetProductDetails())
+            {
+                Console.WriteLine(product.ProductName + " / " + product.CategoryName);
+            }
+        }
+
+        private static void CategoryManagerTest()
+        {
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+
+            foreach (var item in categoryManager.GetAll())
+            {
+                Console.WriteLine(item.CategoryName);
+            }
         }
 
         private static void GetByUnitPriceTest(ProductManager productManager)
