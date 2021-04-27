@@ -29,9 +29,6 @@ namespace Business.Concrete
       
         }
 
-        public List<ProductDetailDto> GetProductDetails()
-        {
-          
-        }
+    
     }
 }

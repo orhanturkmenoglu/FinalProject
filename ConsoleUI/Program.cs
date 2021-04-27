@@ -13,6 +13,21 @@ namespace ConsoleUI
 
             ProductManager productManager = new ProductManager(new EfProductDal());
 
+            var result = productManager.GetProductDetails();
+            if (result.Success)
+            {
+                foreach (var item in result.Data)
+                {
+                    Console.WriteLine(item.ProductName + " / " + item.CategoryName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
+
+
             // GetAllTest(productManager);
 
             // GetAllByCategoryIdTest(productManager);
@@ -28,7 +43,7 @@ namespace ConsoleUI
 
         private static void ProductDetailDto(ProductManager productManager)
         {
-            foreach (var product in productManager.GetProductDetails())
+            foreach (var product in productManager.GetProductDetails().Data)
             {
                 Console.WriteLine(product.ProductName + " / " + product.CategoryName);
             }
@@ -37,7 +52,7 @@ namespace ConsoleUI
         private static void CategoryManagerTest()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-
+          
             foreach (var item in categoryManager.GetAll())
             {
                 Console.WriteLine(item.CategoryName);
@@ -46,7 +61,7 @@ namespace ConsoleUI
 
         private static void GetByUnitPriceTest(ProductManager productManager)
         {
-            foreach (var product in productManager.GetByUnitPrice(50, 100))
+            foreach (var product in productManager.GetByUnitPrice(50, 100).Data)
             {
                 Console.WriteLine(product.ProductName);
             }
@@ -54,7 +69,7 @@ namespace ConsoleUI
 
         private static void GetAllByCategoryIdTest(ProductManager productManager)
         {
-            foreach (var product in productManager.GetAllByCategoryId(2))
+            foreach (var product in productManager.GetAllByCategoryId(2).Data)
             {
                 Console.WriteLine(product.ProductName);
             }
@@ -62,7 +77,7 @@ namespace ConsoleUI
 
         private static void GetAllTest(ProductManager productManager)
         {
-            foreach (var product in productManager.GetAll())
+            foreach (var product in productManager.GetAll().Data)
             {
                 Console.WriteLine(product.ProductName);
             }
@@ -72,7 +87,7 @@ namespace ConsoleUI
         {
             ProductManager productManager = new ProductManager(new InMemoryProductDal());
 
-            foreach (var product in productManager.GetAll())
+            foreach (var product in productManager.GetAll().Data)
             {
                 Console.WriteLine(product.ProductName);
             }
