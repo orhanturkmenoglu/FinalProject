@@ -37,6 +37,7 @@ namespace ConsoleUI
             // CategoryManagerTest();
 
            // ProductDetailDto(productManager);
+    
 
             Console.ReadLine();
         }
@@ -93,4 +94,7 @@ namespace ConsoleUI
             }
         }
     }
+   
+
+
 }

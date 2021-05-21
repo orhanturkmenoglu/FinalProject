@@ -34,8 +34,9 @@ namespace WebAPI
             // bana arka planda bir referans oluþtur birisi senden ýproduct service isterse arka planda product maanger oluþtur onu ver
             // bizim yerimize kendi new liyor
             // singleton'ý içerisinde data tutmuyorsak kullanacagýz.
-            services.AddSingleton<IProductService,ProductManager>();
-            services.AddSingleton<IProductDal, EfProductDal>();
+            // autofac teknolojisine geçiþ yaptýk.
+            //services.AddSingleton<IProductService,ProductManager>();
+            //services.AddSingleton<IProductDal, EfProductDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

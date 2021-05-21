@@ -1,3 +1,6 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Business.DependencyResolvers.Autofac;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -9,6 +12,13 @@ using System.Threading.Tasks;
 
 namespace WebAPI
 {
+    // .net e autofac ile çalýþacaðýmýzý bildiriyoruz 
+    // .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    //.ConfigureContainer<ContainerBuilder>(builder=>
+    //{
+    //    builder.RegisterModule(new AutofacBusinessModule());
+    //}) bu kýsmý bildirdik autofac servis saglayýcýsý 
+    
     public class Program
     {
         public static void Main(string[] args)
@@ -16,8 +26,15 @@ namespace WebAPI
             CreateHostBuilder(args).Build().Run();
         }
 
+        // yayýn kýsmý 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .ConfigureContainer<ContainerBuilder>(builder =>
+                {
+                    builder.RegisterModule(new AutofacBusinessModule());
+                })
+
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
